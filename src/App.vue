@@ -1,15 +1,17 @@
 <template>
+  <feeds/>
   <posts/>
 </template>
 
 <script>
-import {posts} from './pages/posts'
+import { posts } from './pages/posts'
+import { feeds } from './pages/feeds'
 export default {
-  name: "App",
+  name: 'App',
   components: {
-    posts
-  },
-};
+    posts, feeds
+  }
+}
 </script>
 
 <style src="./global.scss" lang="scss">
