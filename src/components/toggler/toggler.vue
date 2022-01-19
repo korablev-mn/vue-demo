@@ -1,35 +1,33 @@
 <template>
   <button @click="onToggle" :class="[{active:show}, 'button']">
-      <div>
-          <span>{{buttonText}} issue </span>
-          <span><icon icon-name="triangle" class="icon"/> </span>
-      </div>
+          <span class="mr-4">{{buttonText}} issue </span>
+          <span><icon name="triangle" class="icon"/> </span>
   </button>
 </template>
 
 <script>
-import {icon} from "@/components/icon"
+import { icon } from '@/icons'
 export default {
-    components: {
-        icon
-    },
-    emits:['onToggle'],
-    data() {
-        return {
-            show: false
-        }
-    },
-    computed: {
-        buttonText() {
-            return this.show ? 'Hide' : 'Show';
-        }
-    },
-    methods: {
-        onToggle(){
-            this.show = !this.show;
-            this.$emit('onToggle', this.show);
-        }
+  components: {
+    icon
+  },
+  emits: ['onToggle'],
+  data () {
+    return {
+      show: false
     }
+  },
+  computed: {
+    buttonText () {
+      return this.show ? 'Hide' : 'Show'
+    }
+  },
+  methods: {
+    onToggle () {
+      this.show = !this.show
+      this.$emit('onToggle', this.show)
+    }
+  }
 }
 </script>
 

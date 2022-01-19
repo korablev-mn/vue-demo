@@ -13,17 +13,17 @@
 </template>
 
 <script>
-import {stats} from '@/components/stats'
+import { stats } from '@/components/stats'
 export default {
-    components: {
-        stats
-    },
-    props: {
-        title: {
-            type: String,
-            default: 'Title'
-        }
+  components: {
+    stats
+  },
+  props: {
+    title: {
+      type: String,
+      default: 'Title'
     }
+  }
 }
 </script>
 

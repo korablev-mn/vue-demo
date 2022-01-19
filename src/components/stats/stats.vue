@@ -1,19 +1,19 @@
 <template>
 <div class="stats">
-    <div class="stats__border stats__right">
-        <div class="stats__icon mr-4">
-            <icon icon-name="stars"/>
-        </div>
-        <span>Star</span>
+  <div class="stats__border stats__right">
+    <div class="stats__icon mr-4">
+      <icon name="stars"/>
+    </div>
+      <span>Star</span>
     </div>
     <div class="stats__border">
-        {{stars}}
+      {{stars}}
     </div>
     <div class="stats__border">
-        <div class="stats__icon mr-4">
-            <icon icon-name="forks"/>
-        </div>
-        <span>Forks</span>
+      <div class="stats__icon mr-4">
+        <icon name="forks"/>
+      </div>
+      <span>Forks</span>
     </div>
     <div class="stats__border stats__left">
         {{forks}}
@@ -22,24 +22,25 @@
 </template>
 
 <script>
-import {icon} from "@/components/icon"
+import { icon } from '@/icons'
 export default {
-    componets: {
-        icon
+  componets: {
+    icon
+  },
+  props: {
+    stars: {
+      type: Number,
+      required: true
     },
-    props: {
-        stars: {
-            type: Number,
-            required: true
-        },
-        forks: {
-            type: Number,
-            required: true
-        }
-    }, setup() {
-        return {};
+    forks: {
+      type: Number,
+      required: true
     }
-};
+  },
+  setup () {
+    return {}
+  }
+}
 </script>
 
 <style lang="scss" scoped>

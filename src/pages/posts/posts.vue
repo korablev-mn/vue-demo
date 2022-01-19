@@ -1,6 +1,5 @@
 <template>
   <div class="posts-container">
-      Posts page
       <ul class="posts__list">
           <li v-for="(item) in posts" :key="item.id" class="posts__item">
               <post :avatarUrl="item.avatar" :username="item.username">
@@ -14,23 +13,22 @@
 </template>
 
 <script>
-import {post} from '@/components/post'
-import {card} from '@/components/card'
+import { post } from '@/components/post'
+import card from '../../components/card'
 import data from '@/data.json'
 export default {
-    components:{
-        post,
-        card
-    },
-    data() {
-        return {
-            posts: []
-        };
-    },
-    created() {
-        console.log(data);
-        this.posts = data;
+  components: {
+    post, card
+  },
+  data () {
+    return {
+      posts: []
     }
+  },
+  created () {
+    this.posts = data
+    console.log(data)
+  }
 }
 </script>
 

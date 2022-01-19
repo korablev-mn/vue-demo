@@ -1,23 +1,8 @@
 <template>
-<div class="avatar">
-    <img :src="avatar" class="img" alt="username avatar"/>
+  <div class="avatar">
+    <img src="https://picsum.photos/300/300" class="img" alt="username avatar"/>
   </div>
 </template>
-
-<script>
-export default {
-  props: {
-    avatar: {
-      type: String,
-      required: true
-    },
-    size: {
-      type: String,
-      required: true
-    }
-  }
-}
-</script>
 
 <style lang="scss" scoped>
 .avatar{
