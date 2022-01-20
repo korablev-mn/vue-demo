@@ -37,19 +37,19 @@ export default {
     },
     username: {
       type: String,
-      default: "User"
+      default: 'User'
     }
   },
-  data() {
+  data () {
     return {
       isShow: false
+    }
+  },
+  methods: {
+    toggleClick (state) {
+      this.isShow = state
+    }
   }
-},
-methods: {
-  toggleClick(state) {
-    this.isShow = state;
-  }
-}
 }
 </script>
 

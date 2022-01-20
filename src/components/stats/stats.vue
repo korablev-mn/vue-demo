@@ -24,7 +24,7 @@
 <script>
 import { icon } from '@/icons'
 export default {
-  componets: {
+  components: {
     icon
   },
   props: {

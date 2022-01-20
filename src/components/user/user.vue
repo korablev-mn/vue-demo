@@ -1,11 +1,11 @@
 <template>
-  <dev class="user">
+  <div class="user">
       <Avatar class="user__avatar mr-12" :avatar="src" :size="size"/>
       <div>
           <div class="user__name mb-4">{{name}}</div>
           <div v-if="type" class="user__type">{{type}}</div>
       </div>
-  </dev>
+  </div>
 </template>
 
 <script>
