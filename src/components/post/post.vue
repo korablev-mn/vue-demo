@@ -24,33 +24,33 @@
 </template>
 
 <script>
-import {user} from '@/components/user'
-import {toggler} from '@/components/toggler'
+import { user } from '@/components/user'
+import { toggler } from '@/components/toggler'
 export default {
-    components: {
-        user, toggler
+  components: {
+    user, toggler
+  },
+  props: {
+    avatarUrl: {
+      type: String,
+      default: 'https://picsum.photos/300/300'
     },
-    props: {
-        avatarUrl: {
-            type: String,
-            default: 'https://picsum.photos/300/300'
-        },
-        username: {
-            type: String,
-            default: "User"
-        }
-    },
-    data() {
-        return {
-            isShow: false
-        };
-    },
-    methods: {
-        toggleClick(state) {
-            this.isShow = state;
-        }
+    username: {
+      type: String,
+      default: "User"
     }
-};
+  },
+  data() {
+    return {
+      isShow: false
+  }
+},
+methods: {
+  toggleClick(state) {
+    this.isShow = state;
+  }
+}
+}
 </script>
 
 <style lang="scss" scoped>
