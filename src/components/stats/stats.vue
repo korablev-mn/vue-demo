@@ -2,7 +2,7 @@
 <div class="stats">
   <div class="stats__border stats__right">
     <div class="stats__icon mr-4">
-      <icon name="stars"/>
+      <icon name="star"/>
     </div>
       <span>Star</span>
     </div>
@@ -45,7 +45,7 @@ export default {
 
 <style lang="scss" scoped>
 .stats {
-    display: fles;
+    display: flex;
     &__border {
         border: 1px solid rgba(27,31,35,0.15);
         display: flex;
@@ -66,6 +66,7 @@ export default {
     &__icon {
         width: 14px;
         height: 14px;
+        color: black;
     }
 }
 </style>
