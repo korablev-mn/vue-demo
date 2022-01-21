@@ -5,6 +5,5 @@
 <style lang="scss" scoped>
 .logo{
     white-space: nowrap;
-     margin-top: -10px;
 }
 </style>

@@ -29,7 +29,7 @@ export default {
     height: 92px;
     border: 2px solid #A6328D;
     border-radius: 50%;
-    margin-right: -35px;
+    // margin-right: -35px;
     // box-shadow: 2px #A6328D;
     // -moz-box-shadow: 2px #A6328D;
     // -webkit-box-shadow: 2px #A6328D;

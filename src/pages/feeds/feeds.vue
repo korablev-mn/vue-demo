@@ -3,11 +3,20 @@
     <heading>
       <template #headline>
         <div class="icon">
-          <icon name="logo" class="items"/>
-          <icon name="empty" class="items"/>
-          <icon name="home" class="items"/>
-          <icon name="avatar" class="items"/>
-          <icon name="exit" class="items"/>
+          <div>
+            <icon name="logo" class="items"/>
+          </div>
+          <div class="bar">
+            <div class="iicon">
+              <icon name="home" class="items"/>
+            </div>
+            <div class="iicon">
+              <icon name="avatar" class="items"/>
+            </div>
+            <div class="iicon">
+            <icon name="exit" class="items"/>
+            </div>
+          </div>
         </div>
       </template>
       <template #content>
@@ -47,20 +56,30 @@ export default {
 <style lang="scss" scoped>
   .icon {
     display: flex;
+    justify-content: space-between;
+    align-items: center;
     color: black;
-    height: 26px;
   }
   .items {
     margin-right: 14px;
   }
-  .items:nth-child(2) {
-    flex: 1;
+  .iicon {
+    width: 24px;
+    height: 24px;
+  }
+  .bar {
+    display: flex;
+    justify-content: space-between;
   }
   .stories {
     display: flex;
     justify-content: space-event;
   }
   .stories-item {
-    margin: 24px;
+    margin-right: 8px;
+    &:last-child {
+      margin-right: 0;
+    }
   }
+
 </style>
