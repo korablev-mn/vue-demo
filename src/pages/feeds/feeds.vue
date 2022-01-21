@@ -11,7 +11,8 @@
               <icon name="home" class="items"/>
             </div>
             <div class="iicon">
-              <icon name="avatar" class="items"/>
+              <avatar avatar="https://picsum.photos/300/300" />
+             <!-- // <icon name="avatar" class="items"/> -->
             </div>
             <div class="iicon">
             <icon name="exit" class="items"/>
@@ -40,10 +41,11 @@ import { heading } from '@/components/heading'
 import { icon } from '@/icons'
 import StoryUserItem from '../../components/storyUserItem/storyUserItem.vue'
 import stories from '../../data.json'
+import { avatar } from '../../components/avatar'
 export default {
   name: 'feeds',
   components: {
-    heading, icon, StoryUserItem
+    heading, icon, StoryUserItem, avatar
   },
   data () {
     return {
