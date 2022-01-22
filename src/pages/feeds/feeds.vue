@@ -2,27 +2,26 @@
   <div class="heading">
     <heading>
       <template #headline>
-        <div class="icon">
+        <div class="topline">
           <div>
             <icon name="logo" class="items"/>
           </div>
-          <div class="bar">
-            <div class="iicon">
+          <div class="menu">
+            <div class="icon mr-8 mb-6">
               <icon name="home" class="items"/>
             </div>
-            <div class="iicon">
-              <avatar avatar="https://picsum.photos/300/300" />
-             <!-- // <icon name="avatar" class="items"/> -->
+            <div class="ava mr-8">
+              <avatar avatar="https://picsum.photos/300/300" size="" />
             </div>
-            <div class="iicon">
-            <icon name="exit" class="items"/>
+            <div class="icon-exit">
+              <icon name="exit" class="items"/>
             </div>
           </div>
         </div>
       </template>
       <template #content>
         <ul class="stories">
-          <li v-for="story in stories" :key="story.id" class="stories-item">
+          <li v-for="story in stories" :key="story.id" class="stories-item mr-8">
             <story-user-item
               class="story-user-item"
               :avatar="story.avatar"
@@ -33,6 +32,7 @@
         </ul>
       </template>
     </heading>
+      <posts/>
   </div>
 </template>
 
@@ -42,10 +42,11 @@ import { icon } from '@/icons'
 import StoryUserItem from '../../components/storyUserItem/storyUserItem.vue'
 import stories from '../../data.json'
 import { avatar } from '../../components/avatar'
+import { posts } from '../posts'
 export default {
   name: 'feeds',
   components: {
-    heading, icon, StoryUserItem, avatar
+    heading, icon, StoryUserItem, avatar, posts
   },
   data () {
     return {
@@ -56,32 +57,30 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-  .icon {
+  .topline {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    color: black;
   }
-  .items {
-    margin-right: 14px;
-  }
-  .iicon {
-    width: 24px;
-    height: 24px;
-  }
-  .bar {
+  .menu {
     display: flex;
     justify-content: space-between;
+    align-items: center;
+  }
+  .icon {
+    width: 25px;
+    height: 25px;
+  }
+  .icon-exit {
+    width: 30px;
   }
   .stories {
     display: flex;
     justify-content: space-event;
   }
   .stories-item {
-    margin-right: 8px;
     &:last-child {
       margin-right: 0;
     }
   }
-
 </style>
