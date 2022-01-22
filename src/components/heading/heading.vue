@@ -7,7 +7,6 @@
         <div class="content" v-if="$slots.content">
             <slot name="content"/>
         </div>
-
       </div>
   </div>
 </template>
