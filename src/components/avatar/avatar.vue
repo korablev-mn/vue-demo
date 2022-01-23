@@ -1,34 +1,51 @@
 <template>
-  <div class="avatar">
-    <img :src="avatar" class="img" alt="username avatar"/>
+  <div class="avatar" :style="[avatarStyle, { width: size + 'px', height: size + 'px'}]">
+    <img :src="url" class="img" alt="username avatar"/>
   </div>
 </template>
 
 <script>
 export default {
   props: {
-    avatar: {
+    url: {
       type: String,
       required: true,
       default: 'https://picsum.photos/300/300'
     },
     size: {
-      type: String,
-      required: true
+      type: Number,
+      default: 37
       // validator: function (value) {
       //   return ['small', 'medium', 'large'].indexOf(value) !== -1;
       // }
+    },
+    border: {
+      type: String,
+      default: 'none'
     }
+  },
+  setup (props) {
+    const style = {
+      red: {
+        border: "2px solid #A6328D"
+      },
+      blue: {
+        border: "2px solid #0000ff"
+      },
+      none: {
+        border: "none"
+      }
+  };
+const avatarStyle = style[props.border]
+
+return { avatarStyle };
   }
-}
+};
 </script>
 
 <style lang="scss" scoped>
 .avatar{
-    width: 37px;
-    height: 37px;
     border-radius: 50%;
-    margin-top: -6px;
 }
 .img{
     display: block;

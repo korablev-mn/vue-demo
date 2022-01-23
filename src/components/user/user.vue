@@ -1,6 +1,6 @@
 <template>
   <div class="user">
-      <Avatar class="user__avatar mr-12" :avatar="src" :size="size"/>
+      <Avatar class="user__avatar mr-12" :url="src" :size="s"/>
       <div>
           <div class="user__name mb-4">{{name}}</div>
           <div v-if="type" class="user__type">{{type}}</div>
