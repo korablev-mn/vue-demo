@@ -1,5 +1,5 @@
 <template>
-<div class="avatar">
+  <div class="avatar">
     <img :src="avatar" class="img" alt="username avatar"/>
   </div>
 </template>
