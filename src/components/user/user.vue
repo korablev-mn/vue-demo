@@ -1,6 +1,6 @@
 <template>
   <div class="user">
-      <Avatar class="user__avatar mr-12" :url="src" :size="s"/>
+      <Avatar class="user__avatar mr-12" :url="src" :size="38"/>
       <div>
           <div class="user__name mb-4">{{name}}</div>
           <div v-if="type" class="user__type">{{type}}</div>
@@ -48,7 +48,7 @@ export default {
         line-height: 18px;
     }
 
-    // &__avatar {
+    // &__ {
     //     /*width: 44px;
     //     height:44px;*/
     // }

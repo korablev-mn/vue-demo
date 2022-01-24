@@ -1,6 +1,6 @@
 <template>
-  <div class="avatar" :style="[avatarStyle, { width: size + 'px', height: size + 'px'}]">
-    <img :src="url" class="img" alt="username avatar"/>
+  <div class="avatar" :style="[Style, { width: size + 'px', height: size + 'px'}]">
+    <img :src="url" class="img" alt="username "/>
   </div>
 </template>
 
@@ -27,20 +27,20 @@ export default {
   setup (props) {
     const style = {
       red: {
-        border: "2px solid #A6328D"
+        border: '2px solid #A6328D'
       },
       blue: {
-        border: "2px solid #0000ff"
+        border: '2px solid #0000ff'
       },
       none: {
-        border: "none"
+        border: 'none'
       }
-  };
-const avatarStyle = style[props.border]
+    }
+    const Style = style[props.border]
 
-return { avatarStyle };
+    return { Style }
   }
-};
+}
 </script>
 
 <style lang="scss" scoped>
@@ -53,6 +53,6 @@ return { avatarStyle };
     border-radius: 50%;
     -moz-border-radius: 50%;
     -webkit-border-radius: 50%;
-    border: 2px solid #fff;
+    border: 4px solid #fff;
 }
 </style>

@@ -2,7 +2,7 @@
   <div class="post">
     My post component
     <div class="post__user">
-        <user :src="avatarUrl" :name="username"/>
+        <user :src="Url" :name="username"/>
     </div>
     <div class="post__card">
         <slot name="card"/>
@@ -31,7 +31,7 @@ export default {
     user, toggler
   },
   props: {
-    avatarUrl: {
+    Url: {
       type: String,
       default: 'https://picsum.photos/300/300'
     },
