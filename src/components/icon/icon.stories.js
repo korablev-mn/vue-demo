@@ -1,14 +1,14 @@
-import avatar from '../avatar/avatar.vue';
+import icon from '../../icons/icon.vue';
 
 export default {
-    title: "component/avatar",
-    components: { avatar },
+    title: "component/icon",
+    components: { icon },
     argTypes: {
-        border: {
+        name: {
             control: {
                 type: 'select'
             },
-            options: ['none', 'red', 'blue']
+            options: ['home', 'exit', 'forks', 'logo', 'star', 'triangle']
         }
     }
 }
@@ -16,7 +16,7 @@ export default {
  const template = args => ({
     props: Object.keys(args),
     components: {
-        avatar
+        icon
     },
     data () {
         return {
@@ -24,16 +24,14 @@ export default {
         }
     },
     template: `
-      <avatar :url='args.url' :size='args.size' :border='args.border'/>
+      <icon :name='args.name'/>
     `
  })
 
 export const defaultView = template.bind(template);
 
 defaultView.args = {
-    url: 'https://picsum.photos/300/300',
-    size: 72,
-    border: 'red'
+    name: 'home'
 }
 defaultView.story = {
     name: "Стандартное отображение"

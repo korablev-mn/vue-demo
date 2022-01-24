@@ -9,7 +9,7 @@
 </template>
 
 <script>
-import { avatar as Avatar } from '@/components/avatar'
+import { avatar as Avatar } from '../avatar'
 export default {
   components: {
     Avatar
@@ -48,10 +48,6 @@ export default {
         line-height: 18px;
     }
 
-    // &__ {
-    //     /*width: 44px;
-    //     height:44px;*/
-    // }
     &__type {
         font-size: 12px;
         color: var(--lightGrey);

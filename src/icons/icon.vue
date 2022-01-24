@@ -3,7 +3,7 @@
 </template>
 
 <script>
-import * as icons from './variants'
+import * as icons from '../icons/variants'
 export default {
   name: 'Icon',
   components: {

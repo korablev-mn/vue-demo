@@ -24,8 +24,8 @@
 </template>
 
 <script>
-import { user } from '@/components/user'
-import { toggler } from '@/components/toggler'
+import { user } from '../user'
+import { toggler } from '../toggler'
 export default {
   components: {
     user, toggler

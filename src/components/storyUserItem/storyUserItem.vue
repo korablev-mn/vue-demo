@@ -1,8 +1,8 @@
 <template>
-  <button class="c-story-user-item" @click="$emit('onPress')">
-      <avatar :url="avatar" :size="92" border="red" />
-      <div class="username">{{ username }}</div>
-  </button>
+<button class="c-story-user-item" @click="$emit('onPress')">
+  <avatar :url="avatar" :size="92" border="red" />
+  <div class="username">{{ username }}</div>
+</button>
 </template>
 
 <script>
@@ -17,6 +17,14 @@ export default {
     username: {
       type: String,
       required: true
+    }
+  },
+  setup () {
+    return {}
+  },
+  methods: {
+    onPress () {
+      this.$emit('handlePress')
     }
   }
 }

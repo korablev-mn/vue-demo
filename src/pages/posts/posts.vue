@@ -2,7 +2,7 @@
   <div class="posts-container">
       <ul class="posts__list">
           <li v-for="(item) in posts" :key="item.id" class="posts__item">
-              <post :avatarUrl="item.avatar" :username="item.username">
+              <post :Url="item.avatar" :username="item.username">
                     <template #card>
                       <card :title="item.title"/>
                     </template>

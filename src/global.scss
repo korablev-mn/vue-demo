@@ -104,3 +104,32 @@ button {
         color: var(--green);
     }
 }
+//TO-DO стили для stories !!!
+.topline {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  .menu {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  .icon {
+    width: 25px;
+    height: 25px;
+  }
+  .icon-exit {
+    width: 30px;
+  }
+  .stories {
+    display: flex;
+    justify-content: space-event;
+  }
+  .stories-item {
+    &:last-child {
+      margin-right: 0;
+    }
+  }
+//TO-DO стили для stories ^^^
+

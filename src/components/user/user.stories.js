@@ -1,14 +1,23 @@
-import avatar from '../avatar/avatar.vue';
+import user from '../user/user.vue';
 
 export default {
-    title: "component/avatar",
-    components: { avatar },
+    title: "UI/user",
+    components: { user },
     argTypes: {
-        border: {
+        src: {
+            type: 'text'
+        },
+        name: {
+            type: 'text'
+        },
+        type: {
+            type: 'text'
+        },
+        size: {
             control: {
                 type: 'select'
             },
-            options: ['none', 'red', 'blue']
+            options: ['s', 'm', 'l']
         }
     }
 }
@@ -16,7 +25,7 @@ export default {
  const template = args => ({
     props: Object.keys(args),
     components: {
-        avatar
+        user
     },
     data () {
         return {
@@ -24,16 +33,17 @@ export default {
         }
     },
     template: `
-      <avatar :url='args.url' :size='args.size' :border='args.border'/>
+      <user :src='args.src' :name='args.name'/>
     `
  })
 
 export const defaultView = template.bind(template);
 
 defaultView.args = {
-    url: 'https://picsum.photos/300/300',
-    size: 72,
-    border: 'red'
+    src: 'https://picsum.photos/300/300',
+    name: 'John Doe',
+    type: '',
+    size: 'm'
 }
 defaultView.story = {
     name: "Стандартное отображение"

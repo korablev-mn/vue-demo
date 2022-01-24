@@ -1,5 +1,6 @@
 module.exports = {
   "stories": [
+    "../src/icons/*.stories.@(js|jsx|ts|tsx)",
     "../src/components/**/*.stories.@(js|jsx|ts|tsx)"
   ],
   "addons": [

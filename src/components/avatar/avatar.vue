@@ -1,5 +1,6 @@
 <template>
-  <div class="avatar" :style="[Style, { width: size + 'px', height: size + 'px'}]">
+  <div :class="[{active: hover}, 'avatar']" :style="[Style, { width: size + 'px', height: size + 'px'}]"
+  @mouseover = "hover = true" @mouseleave = "hover = false">
     <img :src="url" class="img" alt="username "/>
   </div>
 </template>
@@ -24,13 +25,18 @@ export default {
       default: 'none'
     }
   },
+  data () {
+    return {
+      hover: false
+    }
+  },
   setup (props) {
     const style = {
       red: {
-        border: '2px solid #A6328D'
+        borderColor: '#A6328D'
       },
       blue: {
-        border: '2px solid #0000ff'
+        borderColor: '#0000ff'
       },
       none: {
         border: 'none'
@@ -45,7 +51,12 @@ export default {
 
 <style lang="scss" scoped>
 .avatar{
-    border-radius: 50%;
+  border-style: solid;
+  border-width: 2px;
+  border-radius: 50%;
+}
+.active{
+  border: none;
 }
 .img{
     display: block;

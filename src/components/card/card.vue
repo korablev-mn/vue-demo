@@ -13,7 +13,7 @@
 </template>
 
 <script>
-import { stats } from '@/components/stats'
+import { stats } from '../stats'
 export default {
   components: {
     stats
