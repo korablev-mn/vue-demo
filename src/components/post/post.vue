@@ -27,6 +27,7 @@
 import { user } from '../user'
 import { toggler } from '../toggler'
 export default {
+  name: 'Post',
   components: {
     user, toggler
   },

@@ -17,6 +17,7 @@ import { post } from '@/components/post'
 import { card } from '@/components/card'
 import data from '@/data.json'
 export default {
+  name: 'Posts',
   components: {
     post, card
   },

@@ -11,6 +11,7 @@
 <script>
 import { avatar as Avatar } from '../avatar'
 export default {
+  name: 'User',
   components: {
     Avatar
   },

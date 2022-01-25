@@ -24,6 +24,7 @@
 <script>
 import { icon } from '../../icons'
 export default {
+  name: 'Stats',
   components: {
     icon
   },

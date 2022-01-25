@@ -15,6 +15,7 @@
 <script>
 import { stats } from '../stats'
 export default {
+  name: 'Card',
   components: {
     stats
   },

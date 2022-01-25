@@ -8,6 +8,7 @@
 <script>
 import avatar from '../avatar/avatar.vue'
 export default {
+  name: 'StoryUserItem',
   components: { avatar },
   props: {
     avatar: {

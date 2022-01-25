@@ -33,6 +33,23 @@
       </template>
     </heading>
       <posts/>
+      <div class="x-container">
+        <ul class="list">
+          <li class="item" v-for="item in items" :key='item.id'>
+            <feed :feed="getFeedData(item)">
+              <!--
+                v-bind="getFeedData(item)"
+                :feed="getFeedData(item)"
+                <p>:title="item.name"
+              :description="item.description"
+              :username="item.owner.login"
+              :stars="item.stargazers_count"
+              </p> -->
+            </feed>
+          </li>
+        </ul>
+        <pre>{{items}}</pre>
+      </div>
   </div>
 </template>
 
@@ -43,14 +60,37 @@ import StoryUserItem from '../../components/storyUserItem/storyUserItem.vue'
 import stories from '../../data.json'
 import { avatar } from '../../components/avatar'
 import { posts } from '../posts'
+import * as api from '../../api'
+import feed from '../../components/feed/feed.vue'
+
 export default {
-  name: 'feeds',
+  name: 'Feeds',
   components: {
-    heading, icon, StoryUserItem, avatar, posts
+    heading, icon, StoryUserItem, avatar, posts, feed
   },
   data () {
     return {
-      stories
+      stories,
+      items: []
+    }
+  },
+  methods: {
+    getFeedData (item) {
+      return {
+        title: item.name,
+        description: item.description,
+        username: item.owner.login,
+        stars: item.stargazers_count
+      }
+    }
+  },
+  async created () {
+    try {
+      const { data } = await api.trends.getTrendings()
+
+      this.items = data.items
+    } catch (error) {
+      console.log(error)
     }
   }
 }
