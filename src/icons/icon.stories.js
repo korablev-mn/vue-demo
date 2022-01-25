@@ -1,4 +1,4 @@
-import icon from '../../icons/icon.vue';
+import icon from './icon.vue';
 
 export default {
     title: "component/icon",
@@ -24,7 +24,9 @@ export default {
         }
     },
     template: `
+    <div class="storyIcon">
       <icon :name='args.name'/>
+    </div>
     `
  })
 

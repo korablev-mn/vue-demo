@@ -11,7 +11,7 @@
               <icon name="home" class="items"/>
             </div>
             <div class="ava mr-8">
-              <avatar url="https://picsum.photos/300/300" size="38" />
+              <avatar url="https://picsum.photos/300/300" :size="38" />
             </div>
             <div class="icon-exit">
               <icon name="exit" class="items"/>

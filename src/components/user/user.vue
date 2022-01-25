@@ -1,6 +1,6 @@
 <template>
   <div class="user">
-      <Avatar class="user__avatar mr-12" :url="src" :size="38"/>
+      <Avatar class="user__avatar mr-12" :url="src" :size="38" :border="none"/>
       <div>
           <div class="user__name mb-4">{{name}}</div>
           <div v-if="type" class="user__type">{{type}}</div>
@@ -32,10 +32,10 @@ export default {
       type: String,
       default: 's'
     }
-  },
-  setup (props) {
-    return {}
   }
+  // setup (props) {
+  //   return {}
+  // }
 }
 </script>
 
