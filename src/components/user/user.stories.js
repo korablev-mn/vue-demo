@@ -33,7 +33,7 @@ export default {
         }
     },
     template: `
-      <user :src='args.src' :name='args.name'/>
+      <user :src='args.src' :name='args.name' :size='args.size'/>
     `
  })
 
@@ -43,7 +43,7 @@ defaultView.args = {
     src: 'https://picsum.photos/300/300',
     name: 'John Doe',
     type: '',
-    size: 'm'
+    size: 's'
 }
 defaultView.story = {
     name: "Стандартное отображение"

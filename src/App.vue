@@ -1,19 +1,20 @@
 <template>
-  <feeds/>
+  <!-- <feeds/> -->
+  <router-view/>
 </template>
 
 <script>
-import { feeds } from './pages/feeds'
+// import { feeds } from './pages/feeds'
 export default {
-  name: 'App',
-  components: {
-    feeds
-  }
+  // name: 'App',
+  // components: {
+  //   feeds
+  // }
 }
 </script>
 
 <style src="./global.scss" lang="scss">
-p {
-  color: red;
-}
+// p {
+//   color: red;
+// }
 </style>

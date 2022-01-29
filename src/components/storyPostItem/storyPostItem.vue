@@ -34,30 +34,28 @@
               <icon name="arrow"/>
             </span>
           </button>
-          </template>         
+          </template>
     </div>
     <template></template>
   </div>
 </template>
 
 <script>
-import { user } from "../user"
-import { button } from "../button"
-import { progress } from "../progress"
-import { icon } from "../../icons"
-import { placeholder } from "../placeholder" 
-import { spinner } from "../spinner"
-import Button from '../../stories/Button.vue'
+import { user } from '../user'
+import { progress } from '../progress'
+import { icon } from '../../icons'
+// import { placeholder } from '../placeholder'
+import { spinner } from '../spinner'
+import xbutton from '../button/button.vue'
 export default {
-  name: "StoryPostItem",
+  name: 'StoryPostItem',
   components: {
-  user,
-  xButton: button,
-  xProgress: progress,
-  icon,
-  placeholder,
-  spinner,
-    Button
+    user,
+    xButton: xbutton,
+    xProgress: progress,
+    icon,
+    // placeholder,
+    spinner
   },
   props: {
     active: Boolean,
@@ -66,7 +64,7 @@ export default {
       type: Object,
       required: true,
       default: () => ({})
-    },
+    }
   }
 }
 </script>

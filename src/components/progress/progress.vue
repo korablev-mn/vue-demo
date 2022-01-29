@@ -1,35 +1,33 @@
 <template>
   <div :class={active} class="c-progress">
-      <div ref="indicator" class="indicator"></div>
+    <div ref="indicator" class="indicator"></div>
   </div>
 </template>
 
 <script>
 export default {
-    name: 'Progress',
-    data () {
-        return {
-            active: false
-        }
-    },
-    emits: ['onFinish'],
-    methods: {
-        eFinish () {
-            this.$emit('onFinish')
-        }
-    },
-    mounted () {
-        this.$nextTick(() => {     
-            this.active = true
-        })
-
-      this.$refs.indicator
-      .addEventListener('transitionend', this.eFinish)
-    },
-    beforeUnmount () {     
-      this.$refs.indicator
-      .removeEventListener('transitionend', this.eFinish)
+  name: 'Progress',
+  data () {
+    return {
+      active: false
     }
+  },
+  emits: ['onFinish'],
+  methods: {
+    eFinish () {
+      this.$emit('onFinish')
+    }
+  },
+  mounted () {
+    this.$nextTick(() => {
+      this.active = true
+    })
+    this.$refs.indicator
+      .addEventListener('transitionend', this.eFinish)
+  },
+  beforeUnmount () {
+    this.$refs.indicator.removeEventListener('transitionend', this.eFinish)
+  }
 }
 </script>
 

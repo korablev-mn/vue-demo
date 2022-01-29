@@ -1,7 +1,7 @@
 import toggler from '../toggler/toggler.vue';
 
 export default {
-    title: "component/toggler",
+    title: "UI/toggler",
     components: { toggler }
 }
 

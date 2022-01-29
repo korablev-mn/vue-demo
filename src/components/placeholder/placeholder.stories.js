@@ -1,14 +1,19 @@
-import feed from '../feed/feed.vue';
+import placeholder from '../placeholder/placeholder.vue';
 
 export default {
-    title: "UI/feed",
-    components: { feed }
+    title: "UI/placeholder",
+    components: { placeholder },
+    argTypes: {
+        paragraphs: {
+            type: 'number'
+        }
+    }
 }
 
  const template = args => ({
     props: Object.keys(args),
     components: {
-        feed
+        placeholder
     },
     data () {
         return {
@@ -16,20 +21,14 @@ export default {
         }
     },
     template: `
-      <feed :feed='args.obj'
-            :dark='args.dark'/>
+      <placeholder :paragraphs='args.paragraphs'/>
     `
  })
 
 export const defaultView = template.bind(template);
 
 defaultView.args = {
-    obj: {
-        title: 'title',
-        username: 'username',
-        stars: 4
-    },
-    dark: true
+    paragraphs: 2
 }
 defaultView.story = {
     name: "Стандартное отображение"

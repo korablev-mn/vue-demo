@@ -1,14 +1,14 @@
-import feed from '../feed/feed.vue';
+import spinner from './spinner.vue';
 
 export default {
-    title: "UI/feed",
-    components: { feed }
+    title: "component/spinner",
+    components: { spinner }
 }
 
  const template = args => ({
     props: Object.keys(args),
     components: {
-        feed
+        xSpinner: spinner
     },
     data () {
         return {
@@ -16,20 +16,13 @@ export default {
         }
     },
     template: `
-      <feed :feed='args.obj'
-            :dark='args.dark'/>
+      <x-spinner/>
     `
  })
 
 export const defaultView = template.bind(template);
 
 defaultView.args = {
-    obj: {
-        title: 'title',
-        username: 'username',
-        stars: 4
-    },
-    dark: true
 }
 defaultView.story = {
     name: "Стандартное отображение"

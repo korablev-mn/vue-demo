@@ -1,6 +1,6 @@
 <template>
   <div class="user">
-      <Avatar class="user__avatar mr-12" :url="src" :size="38" :border="none"/>
+      <Avatar class="user__avatar mr-12" :url="src" :size='getSize(size)' :border="none"/>
       <div>
           <div class="user__name mb-4">{{name}}</div>
           <div v-if="type" class="user__type">{{type}}</div>
@@ -31,6 +31,17 @@ export default {
     size: {
       type: String,
       default: 's'
+    }
+  },
+  methods: {
+    getSize (value) {
+      if (value === 'l') {
+        return '92'
+      } else if (value === 'm') {
+        return '52'
+      } else {
+        return '37'
+      }
     }
   }
   // setup (props) {

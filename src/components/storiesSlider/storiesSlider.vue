@@ -4,10 +4,10 @@
           <pre>{{ trends }}</pre>
           <ul class="stories">
               <li class="stories-item"
-                  v-for="trend in trends"
+                  v-for='trend in trends'
                   :key="trend.id"
               >
-                <story-post-item 
+                <story-post-item
                   :data="getStoryData(trend)"
                 />
               </li>
@@ -18,34 +18,33 @@
 
 <script>
 import { storyPostItem } from '../storyPostItem'
-import { mapState, mapActions} from 'vuex'
+import { mapState, mapActions } from 'vuex'
 
 export default {
   components: { storyPostItem },
   data () {
-      return {}
+    return {}
   },
   computed: {
     ...mapState({
-        trends: state => state.trends.data
+      trends: state => state.trends.data
     })
   },
   methods: {
-      ... mapActions({
-        fetchTrends: "trends/fetchTrends"
-      }),
-      getStoryData (obj) {
-        return {
-          id: obj.id,
-          urlAvatar: obj.owner?.avatar_url,
-          username: obj.owner?.login,
-          content: obj.readme
-
-        }
+    ...mapActions({
+      fetchTrends: 'trends/fetchTrends'
+    }),
+    getStoryData (obj) {
+      return {
+        id: obj.id,
+        urlAvatar: obj.owner?.avatar_url,
+        username: obj.owner?.login,
+        content: obj.readme
       }
+    }
   },
   async created () {
-      this.fetchTrends()
+    this.fetchTrends()
   }
 }
 </script>

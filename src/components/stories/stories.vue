@@ -1,6 +1,6 @@
 <template>
   <div class="wrapper">
-      <div class="header"> <!-- header -->
+      <!-- <div class="header">
           <div class="x-container">
               <button class="logo" @click="$router.push()">
                   <icon :name="logo"/>
@@ -9,19 +9,24 @@
                   <icon :name="exit"/>
               </button>
           </div>
-      </div><!-- header -->
+      </div>
       <div class="content">
           <stories-slider/>
-      </div>
+      </div> -->
+
+      <icon name="logo"/>
+      <x-button :text="Flut"/>
   </div>
 </template>
 
 <script>
-import Icon from '../../icons/icon.vue'
-import Button from '../../stories/Button.vue'
+import { icon } from '../../icons'
+import { button } from '../button'
 export default {
-  components: { Button, Icon },
-
+  components: {
+    icon,
+    xButton: button
+  }
 }
 </script>
 

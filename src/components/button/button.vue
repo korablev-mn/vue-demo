@@ -6,24 +6,24 @@
 
 <script>
 export default {
-  name: "Button",
+  name: 'Button',
   props: {
     text: {
-        type: String,
-        required: true,
-        default: 'text'
+      type: String,
+      required: true,
+      default: 'text'
     },
     width: {
-        type: Number,
-        default: 52
+      type: Number,
+      default: 52
     },
     height: {
-        type: Number,
-        default: 32
+      type: Number,
+      default: 32
     },
     colorBtn: {
-        type: String,
-        default: 'rgba(49, 174, 84, 1)'
+      type: String,
+      default: 'rgba(49, 174, 84, 1)'
     }
   }
 }
