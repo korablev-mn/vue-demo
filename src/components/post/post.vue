@@ -1,7 +1,6 @@
 <template>
   <div class="post">
-    My post component
-    <div class="post__user">
+    <div class="post__user mt-16 mb-16 ml-12">
         <user :src="Url" :name="username"/>
     </div>
     <div class="post__card">

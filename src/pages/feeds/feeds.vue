@@ -21,11 +21,11 @@
       </template>
       <template #content>
         <ul class="stories">
-          <li v-for="story in stories" :key="story.id" class="stories-item mr-8">
+          <li v-for="item in items" :key="item.id" class="stories-item mr-8">
             <story-user-item
               class="story-user-item"
-              :avatar="story.avatar"
-              :username="story.username"
+              :avatar="item.owner.avatar_url"
+              :username="item.owner.login"
               @onPress="handlePress(story.id)"
             />
           </li>
@@ -33,23 +33,14 @@
       </template>
     </heading>
       <posts/>
-      <div class="x-container">
+      <!-- <div class="x-container">
         <ul class="list">
           <li class="item" v-for="item in items" :key='item.id'>
             <feed :feed="getFeedData(item)">
-              <!--
-                v-bind="getFeedData(item)"
-                :feed="getFeedData(item)"
-                <p>:title="item.name"
-              :description="item.description"
-              :username="item.owner.login"
-              :stars="item.stargazers_count"
-              </p> -->
             </feed>
           </li>
         </ul>
-        <pre>{{items}}</pre>
-      </div>
+      </div> -->
   </div>
 </template>
 
@@ -61,12 +52,11 @@ import stories from '../../data.json'
 import { avatar } from '../../components/avatar'
 import { posts } from '../posts'
 import * as api from '../../api'
-import feed from '../../components/feed/feed.vue'
 
 export default {
   name: 'Feeds',
   components: {
-    heading, icon, StoryUserItem, avatar, posts, feed
+    heading, icon, StoryUserItem, avatar, posts
   },
   data () {
     return {
@@ -75,14 +65,14 @@ export default {
     }
   },
   methods: {
-    getFeedData (item) {
-      return {
-        title: item.name,
-        description: item.description,
-        username: item.owner.login,
-        stars: item.stargazers_count
-      }
-    }
+    // getFeedData (item) {
+    //   return {
+    //     title: item.name,
+    //     description: item.description,
+    //     username: item.owner.login,
+    //     stars: item.stargazers_count
+    //   }
+    // }
   },
   async created () {
     try {
