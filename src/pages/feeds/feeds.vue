@@ -26,7 +26,7 @@
               class="story-user-item"
               :avatar="item.owner.avatar_url"
               :username="item.owner.login"
-              @onPress="handlePress(story.id)"
+              @onPress="handlePress(item.id)"
             />
           </li>
         </ul>
@@ -40,7 +40,8 @@
             </feed>
           </li>
         </ul>
-      </div> -->
+      </div>
+      <pre>{{items}}</pre> -->
   </div>
 </template>
 
@@ -73,6 +74,9 @@ export default {
     //     stars: item.stargazers_count
     //   }
     // }
+    handlePress (id) {
+      this.$router.push('/stories')
+    }
   },
   async created () {
     try {

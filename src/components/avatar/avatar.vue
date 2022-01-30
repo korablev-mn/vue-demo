@@ -11,7 +11,6 @@ export default {
   props: {
     url: {
       type: String,
-      required: true,
       default: 'https://picsum.photos/300/300'
     },
     size: {

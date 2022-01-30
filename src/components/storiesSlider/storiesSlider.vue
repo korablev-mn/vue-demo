@@ -1,8 +1,8 @@
 <template>
   <div class="c-stories-slider">
       <div class="stories-contaner">
-          <pre>{{ trends }}</pre>
-          <ul class="stories">
+          <!-- <pre>{{ trends }}</pre> -->
+          <!-- <ul class="stories">
               <li class="stories-item"
                   v-for='trend in trends'
                   :key="trend.id"
@@ -11,7 +11,8 @@
                   :data="getStoryData(trend)"
                 />
               </li>
-          </ul>
+          </ul> -->
+        <story-post-item/>
       </div>
   </div>
 </template>
@@ -21,7 +22,9 @@ import { storyPostItem } from '../storyPostItem'
 import { mapState, mapActions } from 'vuex'
 
 export default {
-  components: { storyPostItem },
+  components: {
+    storyPostItem
+  },
   data () {
     return {}
   },
@@ -63,5 +66,4 @@ export default {
   height: 660px;
   position: relative;
 }
-
 </style>

@@ -1,7 +1,7 @@
 <template>
   <div class="post">
     <div class="post__user mt-16 mb-16 ml-12">
-        <user :src="Url" :name="username"/>
+        <user :src="Url" name="username"/>
     </div>
     <div class="post__card">
         <slot name="card"/>
