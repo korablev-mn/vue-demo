@@ -10,8 +10,7 @@ export default {
   props: {
     text: {
       type: String,
-      required: true,
-      default: 'text'
+      required: true
     },
     width: {
       type: Number,

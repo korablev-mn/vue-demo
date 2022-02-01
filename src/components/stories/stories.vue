@@ -11,7 +11,7 @@
       </div>
     </div>
     <div class="content">
-      <stories-slider/>
+      <stories-slider :initialSlide='Number($route.params.initialSlide)'/>
     </div>
   </div>
 </template>
@@ -22,14 +22,17 @@ import { storiesSlider } from '../../components/storiesSlider'
 export default {
   components: {
     icon, storiesSlider
+  },
+  mounted () {
+    document.body.style.backgroundColor = '#444444'
+  },
+  unmounted () {
+    document.body.style.backgroundColor = '#fff'
   }
 }
 </script>
 
 <style lang="scss" scoped>
-.wrapper {
-  background-color: #000;
-}
 .x-container {
   display: flex;
     justify-content: space-between;

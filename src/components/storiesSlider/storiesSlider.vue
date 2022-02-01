@@ -1,18 +1,23 @@
 <template>
   <div class="c-stories-slider">
       <div class="stories-contaner">
-          <!-- <pre>{{ trends }}</pre> -->
-          <!-- <ul class="stories">
+          <ul class="stories" ref="slider">
               <li class="stories-item"
-                  v-for='trend in trends'
+                  v-for='(trend, ndx) in trends'
                   :key="trend.id"
+                  ref="item"
               >
                 <story-post-item
-                  :data="getStoryData(trend)"
+                :data="getStoryData(trends)"
+                :active="slideNdx === ndx"
+                :loading ='slideNdx === ndx && loading'
+                :btnsShow="activeBtns"
+                @onNextSlide="handleSlide(ndx + 1)"
+                @onPrevSlide="handleSlide(ndx - 1)"
+                @onProgressFinish="handleSlide(ndx + 1)"
                 />
               </li>
-          </ul> -->
-        <story-post-item/>
+          </ul>
       </div>
   </div>
 </template>
@@ -25,18 +30,39 @@ export default {
   components: {
     storyPostItem
   },
+  props: {
+    initialSlide: {
+      type: Number
+    }
+  },
   data () {
-    return {}
+    return {
+      slideNdx: 0,
+      slidePosition: 0,
+      loading: false,
+      btnsShow: true
+    }
   },
   computed: {
     ...mapState({
       trends: state => state.trends.data
-    })
+    }),
+    activeBtns () {
+      if (this.btnsShow === false) return []
+      if (this.slideNdx === 0) return ['next']
+      if (this.slideNdx === this.trends.lenght - 1) return ['prev']
+      return ['next', 'prev']
+    }
   },
   methods: {
     ...mapActions({
-      fetchTrends: 'trends/fetchTrends'
+      fetchTrends: 'trends/fetchTrends',
+      fetchReadme: 'trends/fetchReadme'
     }),
+    async fetchReadmeForActiveSlide () {
+      const { id, owner, name } = this.trends[this.slideNdx]
+      await this.fetchReadme({ id, owner: owner.login, repo: name })
+    },
     getStoryData (obj) {
       return {
         id: obj.id,
@@ -44,10 +70,41 @@ export default {
         username: obj.owner?.login,
         content: obj.readme
       }
+    },
+    moveSlider (slideNdx) {
+      const { slider, item } = this.$refs
+      const slideWidth = parseInt(
+        getComputedStyle(item).getPropertyValue('width'), 10)
+      this.slideNdx = slideNdx
+      this.slidePosition = -(slideWidth * slideNdx)
+      slider.style.transform = `translateX (${this.slidePosition}px)`
+    },
+    async loadReadme () {
+      this.loading = true
+      this.btnsShow = false
+      try {
+        await this.fetchReadmeForActiveSlide()
+      } catch (e) {
+        console.log(e)
+        throw e
+      } finally {
+        this.loading = false
+        this.btnsShow = true
+      }
+      await this.fetchReadmeForActiveSlide()
+    },
+    async handleSlide (slideNdx) {
+      this.moveSlider(slideNdx)
+      await this.loadReadme()
     }
   },
-  async created () {
-    this.fetchTrends()
+  async mounted () {
+    if (this.initialSlide) {
+      const ndx = this.trends.findIndex(item => item.id === this.initialSlide)
+      await this.handleSlide(ndx)
+    }
+    await this.fetchTrends()
+    await this.loadReadme()
   }
 }
 </script>
@@ -65,5 +122,10 @@ export default {
 .stories-contaner {
   height: 660px;
   position: relative;
+  display: flex;
+  justify-content: center;
+}
+.tee {
+  color: #fff;
 }
 </style>

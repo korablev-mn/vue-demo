@@ -1,5 +1,5 @@
 <template>
-  <div :class={active} class="c-progress">
+  <div :class={activate} class="c-progress">
     <div ref="indicator" class="indicator"></div>
   </div>
 </template>
@@ -9,7 +9,7 @@ export default {
   name: 'Progress',
   data () {
     return {
-      active: false
+      activate: false
     }
   },
   emits: ['onFinish'],
@@ -20,7 +20,7 @@ export default {
   },
   mounted () {
     this.$nextTick(() => {
-      this.active = true
+      this.activate = true
     })
     this.$refs.indicator
       .addEventListener('transitionend', this.eFinish)
@@ -39,7 +39,7 @@ export default {
     position: relative;
     overflow: hidden;
 
-    &.active {
+    &.activate {
         .indicator {
             width: 100%;
         }

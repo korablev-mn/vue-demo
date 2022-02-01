@@ -11,9 +11,6 @@ export default {
 <style lang="scss" scoped>
 .spinner {
     content: "";
-    position: absolute;
-    top: 0;
-    left: 0;
     width: 40px;
     height: 40px;
     background: transparent;

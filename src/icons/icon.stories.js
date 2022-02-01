@@ -8,7 +8,7 @@ export default {
             control: {
                 type: 'select'
             },
-            options: ['home', 'exit', 'forks', 'logo', 'star', 'triangle', 'close']
+            options: ['home', 'exit', 'forks', 'logo', 'star', 'triangle', 'close', 'arrow']
         }
     }
 }

@@ -1,4 +1,3 @@
-// import { URLSearchParams } from 'core-js/modules/web.url-search-params'
 import { makeRequest } from '../request'
 
 const addStartingZero = (value) => value < 10 ? `0${value}` : value

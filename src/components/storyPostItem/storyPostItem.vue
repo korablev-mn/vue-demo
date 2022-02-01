@@ -1,13 +1,13 @@
 <template>
-  <div class="c-story-post-item" :class={active}>
+  <div class="c-story-post-item" :class={active} @onFinish="$emit('onProgressFinish')">
     <div class="stories-container">
       <div class="header">
         <div class="progress">
-          <x-progress :active="active"/>
+          <x-progress :activate="activate"/>
         </div>
-        <div class="user">
+        <div class="user pt-12">
           <user :name="data.username"
-            :src="data.url"
+                :src="data.urlAvatar"
           />
         </div>
       </div>
@@ -21,16 +21,16 @@
             <placeholder v-else :paragraphs="2"/>
         </div>
       </div>
-      <div class="button">
-        <x-button class="follow">Follow</x-button>
+      <div class="buttonn">
+        <x-button text="Follow" :width="202" :height="40"/>
       </div>
       <template v-if="active">
-        <button class="btn btn-next">
+        <button class="btnn btn-next">
           <span class="icon">
             <icon name="arrow"/>
           </span>
         </button>
-        <button class="btn btn-prev">
+        <button class="btnn btn-prev">
           <span class="icon">
             <icon name="arrow"/>
           </span>
@@ -44,22 +44,30 @@
 import { user } from '../user'
 import { progress } from '../progress'
 import { icon } from '../../icons'
-// import { placeholder } from '../placeholder'
+import { placeholder } from '../placeholder'
 import { spinner } from '../spinner'
-import xbutton from '../button/button.vue'
+import button from '../button/button.vue'
 export default {
   name: 'StoryPostItem',
   components: {
     user,
-    xButton: xbutton,
+    xButton: button,
     xProgress: progress,
     icon,
-    // placeholder,
+    placeholder,
     spinner
   },
+  emits: ['onPrevSlide', 'onNextSlide', 'onProgressFinish'],
   props: {
     active: Boolean,
     loading: Boolean,
+    btnsShow: {
+      type: Array,
+      default: () => ['next', 'prev'],
+      validator (val) {
+        return val.every(item => item === 'next' || item === 'prev')
+      }
+    },
     data: {
       type: Object,
       required: true,
@@ -72,11 +80,15 @@ export default {
 <style lang="scss" scoped>
 .c-story-post-item{
   display: flex;
-  align-content: stretch;
+  // align-content: stretch;
   width: 302px;
   height: 538px;
   background: #fff;
   border-radius: 6px;
+  align-self: center;
+  padding: 10px;
+  margin: 50px;
+  // margin-left: 100px;
   // height: 664px;
   // position: relative;
   // transform: scale(0.8);
@@ -87,18 +99,49 @@ export default {
   // -ms-user-select: none;
   // user-select: none;
 }
+.active {
+  display: flex;
+  width: 376px;
+  height: 664px;
+  background: #fff;
+  border-radius: 12px;
+  padding: 18px;
+}
 .stories-container{
-  padding: 10px;
   display: flex;
   width: 100%;
   flex-direction: column;
 }
-.stories-container div:last-child{
-   margin-top: auto;
-}
-.button {
+// .stories-container div:last-child{
+//   // margin-top: auto;
+// }
+.buttonn {
   display: flex;
   flex-direction: column;
   align-items: center;
+}
+.info {
+  padding: 12px;
+}
+.content {
+  flex:1;
+  align-items: center;
+}
+.loader {
+  padding-top: 200px;
+  display: flex;
+  justify-content: center;
+  margin-top: auto;
+}
+.btn-prev{
+  position: absolute;
+  top:45%;
+  left: -0.5%;
+}
+.btn-next{
+  position: absolute;
+  top:45%;
+  left: 8%;
+  transform: rotate(180deg);
 }
 </style>

@@ -91,6 +91,9 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+// :global(body) {
+//   background: v-bind(color);
+// }
   .topline {
     display: flex;
     justify-content: space-between;
