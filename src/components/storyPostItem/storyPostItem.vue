@@ -16,7 +16,7 @@
           <spinner/>
         </div>
         <div class="info" v-else>
-          <div v-if="data.content?.lenght" class="content-text" v-html="data.content">
+          <div v-if="data.content?.length" class="content-text" v-html="data.content">
           </div>
             <placeholder v-else :paragraphs="2"/>
         </div>
@@ -25,12 +25,12 @@
         <x-button text="Follow" :width="202" :height="40"/>
       </div>
       <template v-if="active">
-        <button class="btnn btn-next">
+        <button v-if="btnsShow.includes('next')" class="btnn btn-next" @click="$emit('onNextSlide')">
           <span class="icon">
             <icon name="arrow"/>
           </span>
         </button>
-        <button class="btnn btn-prev">
+        <button v-if="btnsShow.includes('prev')" class="btnn btn-prev" @click="$emit('onPrevSlide')">
           <span class="icon">
             <icon name="arrow"/>
           </span>
@@ -64,8 +64,8 @@ export default {
     btnsShow: {
       type: Array,
       default: () => ['next', 'prev'],
-      validator (val) {
-        return val.every(item => item === 'next' || item === 'prev')
+      validator (value) {
+        return value.every((item) => item === 'next' || item === 'prev')
       }
     },
     data: {
@@ -136,12 +136,12 @@ export default {
 .btn-prev{
   position: absolute;
   top:45%;
-  left: -0.5%;
+  left: -0.1%;
 }
 .btn-next{
   position: absolute;
   top:45%;
-  left: 8%;
+  left: 10.8%;
   transform: rotate(180deg);
 }
 </style>

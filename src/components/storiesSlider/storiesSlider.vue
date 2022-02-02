@@ -8,7 +8,7 @@
                   ref="item"
               >
                 <story-post-item
-                :data="getStoryData(trends)"
+                :data="getStoryData(trend)"
                 :active="slideNdx === ndx"
                 :loading ='slideNdx === ndx && loading'
                 :btnsShow="activeBtns"
@@ -50,7 +50,7 @@ export default {
     activeBtns () {
       if (this.btnsShow === false) return []
       if (this.slideNdx === 0) return ['next']
-      if (this.slideNdx === this.trends.lenght - 1) return ['prev']
+      if (this.slideNdx === this.trends.length - 1) return ['prev']
       return ['next', 'prev']
     }
   },
