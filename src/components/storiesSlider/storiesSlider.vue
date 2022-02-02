@@ -1,11 +1,10 @@
 <template>
   <div class="c-stories-slider">
-      <div class="stories-contaner">
-          <ul class="stories" ref="slider">
+      <div class="stories-contaner" ref="slider">
+          <ul class="stories" ref="item">
               <li class="stories-item"
                   v-for='(trend, ndx) in trends'
                   :key="trend.id"
-                  ref="item"
               >
                 <story-post-item
                 :data="getStoryData(trend)"
@@ -73,11 +72,10 @@ export default {
     },
     moveSlider (slideNdx) {
       const { slider, item } = this.$refs
-      const slideWidth = parseInt(
-        getComputedStyle(item).getPropertyValue('width'), 10)
+      const slideWidth = getComputedStyle(item).getPropertyValue('width')
       this.slideNdx = slideNdx
-      this.slidePosition = -(slideWidth * slideNdx)
-      slider.style.transform = `translateX (${this.slidePosition}px)`
+      this.slidePosition = parseInt(slideWidth) / 10 * parseInt(slideNdx)
+      slider.style.transform = `translateX (-${this.slidePosition}px)`
     },
     async loadReadme () {
       this.loading = true
