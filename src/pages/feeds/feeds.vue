@@ -1,4 +1,5 @@
 <template>
+<!-- <pre>{{items}}</pre> -->
   <div class="heading">
     <heading>
       <template #headline>
@@ -40,8 +41,7 @@
             </feed>
           </li>
         </ul>
-      </div>
-      <pre>{{items}}</pre> -->
+      </div>-->
   </div>
 </template>
 
@@ -49,23 +49,32 @@
 import { heading } from '@/components/heading'
 import { icon } from '@/icons'
 import StoryUserItem from '../../components/storyUserItem/storyUserItem.vue'
-import stories from '../../data.json'
+// import stories from '../../data.json'
 import { avatar } from '../../components/avatar'
 import { posts } from '../posts'
-import * as api from '../../api'
+// import * as api from '../../api'
+import { mapState, mapActions } from 'vuex'
 
 export default {
   name: 'Feeds',
   components: {
     heading, icon, StoryUserItem, avatar, posts
   },
-  data () {
-    return {
-      stories,
-      items: []
-    }
+  // data () {
+  //   return {
+  //     stories,
+  //     items: []
+  //   }
+  // },
+  computed: {
+    ...mapState({
+      items: state => state.trends.data
+    })
   },
   methods: {
+    ...mapActions({
+      fetchTrends: 'trends/fetchTrends'
+    }),
     // getFeedData (item) {
     //   return {
     //     title: item.name,
@@ -78,14 +87,17 @@ export default {
       this.$router.push({ name: 'stories', params: { initialSlide: id } })
     }
   },
-  async created () {
-    try {
-      const { data } = await api.trends.getTrendings()
+  // async created () {
+  //   try {
+  //     const { data } = await api.trends.getTrendings()
 
-      this.items = data.items
-    } catch (error) {
-      console.log(error)
-    }
+  //     this.items = data.items
+  //   } catch (error) {
+  //     console.log(error)
+  //   }
+  // }
+  async mounted () {
+    await this.fetchTrends()
   }
 }
 </script>

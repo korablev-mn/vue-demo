@@ -3,7 +3,7 @@
     <div class="stories-container">
       <div class="header">
         <div class="progress">
-          <x-progress :activate="activate"/>
+          <x-progress :activate="active"/>
         </div>
         <div class="user pt-12">
           <user :name="data.username"
@@ -111,6 +111,7 @@ export default {
   display: flex;
   width: 100%;
   flex-direction: column;
+  position: relative;
 }
 // .stories-container div:last-child{
 //   // margin-top: auto;
@@ -124,8 +125,10 @@ export default {
   padding: 12px;
 }
 .content {
-  flex:1;
+  // flex:1;
+  height: 500px;
   align-items: center;
+  overflow: scroll;
 }
 .loader {
   padding-top: 200px;
@@ -136,12 +139,12 @@ export default {
 .btn-prev{
   position: absolute;
   top:45%;
-  left: -0.1%;
+  left: -21%;
 }
 .btn-next{
   position: absolute;
   top:45%;
-  left: 10.8%;
+  left: 115%;
   transform: rotate(180deg);
 }
 </style>
