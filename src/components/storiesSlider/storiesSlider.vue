@@ -1,7 +1,7 @@
 <template>
   <div class="c-stories-slider">
       <div class="stories-contaner" >
-          <ul class="stories" ref="slider">
+          <ul class="stories" ref="slider" :style="x">
               <li class="stories-item"
                   v-for='(trend, ndx) in trends'
                   :key="trend.id"
@@ -40,7 +40,8 @@ export default {
       slideNdx: 0,
       slidePosition: 0,
       loading: false,
-      btnsShow: true
+      btnsShow: true,
+      xValue: 0
     }
   },
   computed: {
@@ -52,6 +53,9 @@ export default {
       if (this.slideNdx === 0) return ['next']
       if (this.slideNdx === this.trends.length - 1) return ['prev']
       return ['next', 'prev']
+    },
+    x () {
+      return `transform: translateX(-${this.xValue}px)`
     }
   },
   methods: {
@@ -76,8 +80,9 @@ export default {
       const slideWidth = getComputedStyle(slider).getPropertyValue('width')
       this.slideNdx = slideNdx
       this.slidePosition = parseInt(slideWidth) / 10 * parseInt(slideNdx)
-      const style = `translateX (-${this.slidePosition}px)`
-      slider.style.transform = style
+      // const style = `translateX (-${this.slidePosition}px)`
+      this.xValue = this.slidePosition
+      // slider.style.transform = style
     },
     async loadReadme () {
       this.loading = true
@@ -120,9 +125,9 @@ export default {
   transform: translateX(-32px);
 }
 .stories-contaner {
-  height: 660px;
+  height: 715px;
   position: relative;
   display: flex;
-  justify-content: center;
+  // justify-content: center;
 }
 </style>
