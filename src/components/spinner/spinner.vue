@@ -11,8 +11,8 @@ export default {
 <style lang="scss" scoped>
 .spinner {
     content: "";
-    width: 40px;
-    height: 40px;
+    width: 20px;
+    height: 20px;
     background: transparent;
     border-left: 3px solid #31ae54;
     border-right: 3px solid #31ae54;

@@ -56,6 +56,9 @@ export default {
         console.log(e)
         throw e
       }
+    },
+    async starRepo ({ commit, getters }, id) {
+      console.log('id - ' + id)
     }
   }
 }

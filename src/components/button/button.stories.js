@@ -13,8 +13,14 @@ export default {
       height: {
         type: 'number'
       },
-      backgroundColor: {
+      theme: {
         type: 'text'
+      },
+      loading: {
+        type: 'boolean'
+      },
+      disabled: {
+        type: 'boolean'
       }
     }
 }
@@ -30,7 +36,9 @@ const template = args => ({
        }
    },
    template: `
-     <btn :text='args.text' :width='args.width' :height='args.height' :colorBtn='args.backgroundColor' />
+     <btn :text='args.text' :width='args.width' 
+     :height='args.height' :theme='args.theme' 
+     :loading='args.loading' :disabled='args.disabled'/>
    `
 })
 
@@ -40,7 +48,9 @@ defaultView.args = {
     text: 'Follow',
     width: 52,
     height: 32,
-    backgroundColor: 'rgba(49, 174, 84, 1)'
+    theme: 'green',
+    loading: false,
+    disabled: false
 }
 defaultView.story = {
     name: "Стандартное отображение"

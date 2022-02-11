@@ -1,9 +1,9 @@
 <template>
-  <div class="c-story-post-item" :class={active} @onFinish="$emit('onProgressFinish')">
+  <div class="c-story-post-item" :class={active}>
     <div class="stories-container">
       <div class="header">
         <div class="progress">
-          <x-progress :activate="active"/>
+          <x-progress :activate="active" @onFinish="$emit('onProgressFinish')"/>
         </div>
         <div class="user pt-12">
           <user :name="data.username"
@@ -22,7 +22,8 @@
         </div>
       </div>
       <div class="buttonn">
-        <x-button text="Follow" :width="202" :height="40"/>
+        <x-button text="Follow" :width="202" :height="40"
+        @click="$emit('onFollow', data.id)"/>
       </div>
       <template v-if="active">
         <button v-if="btnsShow.includes('next')" class="btnn btn-next" @click="$emit('onNextSlide')">
@@ -57,7 +58,7 @@ export default {
     placeholder,
     spinner
   },
-  emits: ['onPrevSlide', 'onNextSlide', 'onProgressFinish'],
+  emits: ['onPrevSlide', 'onNextSlide', 'onProgressFinish', 'onFollow'],
   props: {
     active: Boolean,
     loading: Boolean,
