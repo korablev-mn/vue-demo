@@ -1,10 +1,10 @@
 <template>
-  <div :style="{ width: width+'px', height: height + 'px', background: theme}"
+  <button :style="{ width: width+'px', height: height + 'px', background: theme}"
        :class="[{active: hover, disable: disabled}, 'btn']"
-       @mouseover = "hover = true" @mouseleave = "hover = false">
+       @mouseover = "hover = true" @mouseleave = "hover = false" :disabled="disabled">
     <div v-if="loading"><spinner/></div>
     <div v-else>{{text}}</div>
-  </div>
+  </button>
 </template>
 
 <script>

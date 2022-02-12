@@ -1,3 +1,5 @@
 export * as trends from './rest/trends'
 export * as readme from './rest/readme'
 export * as starred from './rest/starred'
+export * as user from './rest/user'
+export * as repo from './rest/repo'

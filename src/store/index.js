@@ -1,9 +1,24 @@
 import { createStore } from 'vuex'
 import trends from '../store/modules/trends'
+import starred from '../store/modules/starred'
 
 export default createStore({
+  getters: {
+    getUnstarredOnly (state) {
+      return state.trends.data.filter((trendsRepo) => {
+        return !state.starred.data.some(starredRepo => {
+          return trendsRepo.id === starredRepo.id
+        })
+      })
+    }
+  },
   modules: {
-    trends
+    trends,
+    starred
+    // starred,
+    // auth,
+    // user,
+    // repos
   }
 //  { перенесено в trends.js
 //  state: {

@@ -4,17 +4,17 @@
     <heading>
       <template #headline>
         <div class="topline">
-          <div>
+          <div @click="$router.push({name: 'feeds'})">
             <icon name="logo" class="items"/>
           </div>
-          <div class="menu">
-            <div class="icon mr-8 mb-6">
+          <div class="menu" v-if='hasUser'>
+            <div class="icon mr-8 mb-6" @click="$router.push({name: 'feeds'})">
               <icon name="home" class="items"/>
             </div>
-            <div class="ava mr-8">
+            <div class="ava mr-8" @click="$router.push({name: 'user'})">
               <avatar url="https://picsum.photos/300/300" :size="38" />
             </div>
-            <div class="icon-exit">
+            <div class="icon-exit" @click='logout'>
               <icon name="exit" class="items"/>
             </div>
           </div>
@@ -53,7 +53,7 @@ import StoryUserItem from '../../components/storyUserItem/storyUserItem.vue'
 import { avatar } from '../../components/avatar'
 import { posts } from '../posts'
 // import * as api from '../../api'
-import { mapState, mapActions } from 'vuex'
+import { mapState, mapActions, mapGetters } from 'vuex'
 
 export default {
   name: 'Feeds',
@@ -69,11 +69,20 @@ export default {
   computed: {
     ...mapState({
       items: state => state.trends.data
-    })
+    }),
+    ...mapGetters(['getUnstarredOnly'])
+    // hasUser: 'user/hasUser'
+  },
+  data () {
+    return {
+      hasUser: true
+    }
   },
   methods: {
     ...mapActions({
       fetchTrends: 'trends/fetchTrends'
+      // logout: 'auth/logout',
+      // getUser: 'user/getUser'
     }),
     // getFeedData (item) {
     //   return {
