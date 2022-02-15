@@ -7,12 +7,11 @@ export default {
     getAuthCode () {
       api.auth.sendUserToAuthPage()
     },
-
     async authUserByCode (store, code) {
       const { data } = await api.auth.getAccessTokenByPersonalCode(code)
       return data.token
     },
-    logout() {
+    logout () {
       localStorage.removeItem('token')
       window.location.reload()
     }

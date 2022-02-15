@@ -1,6 +1,7 @@
 import { createStore } from 'vuex'
 import trends from '../store/modules/trends'
 import starred from '../store/modules/starred'
+import auth from '../store/modules/auth'
 
 export default createStore({
   getters: {
@@ -14,9 +15,8 @@ export default createStore({
   },
   modules: {
     trends,
-    starred
-    // starred,
-    // auth,
+    starred,
+    auth
     // user,
     // repos
   }

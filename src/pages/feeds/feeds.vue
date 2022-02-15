@@ -80,8 +80,8 @@ export default {
   },
   methods: {
     ...mapActions({
-      fetchTrends: 'trends/fetchTrends'
-      // logout: 'auth/logout',
+      fetchTrends: 'trends/fetchTrends',
+      logout: 'auth/logout'
       // getUser: 'user/getUser'
     }),
     // getFeedData (item) {
@@ -96,15 +96,6 @@ export default {
       this.$router.push({ name: 'stories', params: { initialSlide: id } })
     }
   },
-  // async created () {
-  //   try {
-  //     const { data } = await api.trends.getTrendings()
-
-  //     this.items = data.items
-  //   } catch (error) {
-  //     console.log(error)
-  //   }
-  // }
   async mounted () {
     await this.fetchTrends()
   }

@@ -1,13 +1,15 @@
 <template>
   <div class="center">
-    <icon class="logo" name='logo'/>
-    <p class="slog">More than just one repository. <br> This is our digital world.</p>
-    <button :class="[{active: hover}, 'auth']" @click="getUser"
-    @mouseover = "hover = true" @mouseleave = "hover = false"
-    >
-    Authorization with github
-    <icon class="github" name='github'/>
-    </button>
+    <div class="wrap">
+      <icon class="logo" name='logo'/>
+      <p class="slog">More than just one repository. <br> This is our digital world.</p>
+      <button :class="[{active: hover}, 'auth']" @click="getUser"
+      @mouseover = "hover = true" @mouseleave = "hover = false"
+      >
+      Authorization with github
+        <icon class="github" name='github'/>
+      </button>
+    </div>
     <div class="macbook">
       <div class="monitor">
         <div class="screen">
@@ -21,8 +23,8 @@
       <div class="mac corp"/>
       <div class="mac dno"/>
     </div>
-    <p class="footer">&copy; Gitogram from Loftschool</p>
   </div>
+  <p class="footer">&copy; Gitogram from Loftschool</p>
 </template>
 
 <script>
@@ -87,13 +89,16 @@ export default {
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: center;
-  // position: absolute;
-  // left: 50%;
-  // top: 50%;
-  margin-left: -22px;
-  margin-top: -22px;
-  // overflow: scroll;
+  justify-content: space-around;
+  align-self: center;
+  margin-top: auto;
+  height: 100vh;
+  min-height: 720px;
+}
+.wrap {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 .macbook {
   display: flex;
