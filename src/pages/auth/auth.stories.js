@@ -1,7 +1,7 @@
 import auth from '../auth/auth.vue';
 
 export default {
-    title: "component/auth",
+    title: "UI/auth",
     components: { auth },
     argTypes: {
     }

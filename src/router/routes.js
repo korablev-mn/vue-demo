@@ -1,6 +1,6 @@
 import { feeds } from '../pages/feeds'
 import { stories } from '../components/stories'
-import { auth } from '../components/auth'
+import { auth } from '../pages/auth'
 
 export default [
   {

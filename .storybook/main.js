@@ -2,6 +2,7 @@ module.exports = {
   "stories": [
     "../src/icons/*.stories.@(js|jsx|ts|tsx)",
     "../src/components/**/*.stories.@(js|jsx|ts|tsx)",
+    "../src/pages/**/*.stories.@(js|jsx|ts|tsx)",
     "../src/stories/*.stories.@(js|jsx|ts|tsx)"
 
   ],
