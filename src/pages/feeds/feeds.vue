@@ -14,7 +14,8 @@
             <div class="ava mr-8" @click="$router.push({name: 'user'})">
               <avatar url="https://picsum.photos/300/300" :size="38" />
             </div>
-            <div class="icon-exit" @click='logout'>
+            <div :class="[{activeExt: hoverExt}, 'icon-exit']" @click='logout'
+            @mouseover = "hoverExt = true" @mouseleave = "hoverExt = false">
               <icon name="exit" class="items"/>
             </div>
           </div>
@@ -75,7 +76,8 @@ export default {
   },
   data () {
     return {
-      hasUser: true
+      hasUser: true,
+      hoverExt: false
     }
   },
   methods: {
@@ -119,6 +121,19 @@ export default {
   }
   .icon-exit {
     width: 30px;
+  }
+  .activeExt {
+    // transition: transform 2s;
+    -webkit-animation: rotate 0.5s infinite linear;
+  }
+  .activeExt:hover {
+    // -webkit-transform: scale(1.5);
+    // transform: scale(1.5);
+    color: gray;
+  @-webkit-keyframes rotate{
+    0%   { -webkit-transform: rotate(20deg); }
+    100% { -webkit-transform: rotate(-20deg); }
+  }
   }
   .stories {
     display: flex;

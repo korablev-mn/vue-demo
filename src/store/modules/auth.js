@@ -1,7 +1,7 @@
 import * as api from '../../api'
 
 export default {
-  namespase: true,
+  namespaced: true,
   state: {},
   actions: {
     getAuthCode () {
