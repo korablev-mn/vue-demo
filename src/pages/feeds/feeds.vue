@@ -129,6 +129,7 @@ export default {
   .activeExt:hover {
     // -webkit-transform: scale(1.5);
     // transform: scale(1.5);
+    cursor: pointer;
     color: gray;
   @-webkit-keyframes rotate{
     0%   { -webkit-transform: rotate(20deg); }
