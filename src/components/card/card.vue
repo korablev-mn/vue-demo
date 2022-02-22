@@ -4,10 +4,10 @@
         <h2 class="card__title">{{title}}</h2>
     </div>
     <div class="card__desc mb-32">
-        hdfvjknsdfkjvjhkdfsvjsdfnj;vnjsdfnjvnsjdfnvjlsnjldfbvnjsdnjfvnjlsdfnl/vnljsdfnjl/bdnjf
+        {{ description }}
     </div>
     <div class="card__stats">
-        <stats :stars="10" :forks="4"/>
+        <stats :stars="stars" :forks="forks"/>
     </div>
   </div>
 </template>
@@ -23,6 +23,18 @@ export default {
     title: {
       type: String,
       default: 'Title'
+    },
+    description: {
+      type: String,
+      default: 'Some text'
+    },
+    stars: {
+      type: Number,
+      default: 0
+    },
+    forks: {
+      type: Number,
+      default: 0
     }
   }
 }

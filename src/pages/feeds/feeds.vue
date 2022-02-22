@@ -8,11 +8,14 @@
             <icon name="logo" class="items"/>
           </div>
           <div class="menu" v-if='hasUser'>
+            <div class="login">
+            {{ user.login }}
+            </div>
             <div class="icon mr-8 mb-6" @click="$router.push({name: 'feeds'})">
               <icon name="home" class="items"/>
             </div>
             <div class="ava mr-8" @click="$router.push({name: 'user'})">
-              <avatar url="https://picsum.photos/300/300" :size="38" />
+              <avatar :url="user.avatar_url" :size="38" />
             </div>
             <div :class="[{activeExt: hoverExt}, 'icon-exit']" @click='logout'
             @mouseover = "hoverExt = true" @mouseleave = "hoverExt = false">
@@ -69,7 +72,8 @@ export default {
   // },
   computed: {
     ...mapState({
-      items: state => state.trends.data
+      items: state => state.trends.data,
+      user: state => state.user.userData
     }),
     ...mapGetters(['getUnstarredOnly'])
     // hasUser: 'user/hasUser'
@@ -83,8 +87,8 @@ export default {
   methods: {
     ...mapActions({
       fetchTrends: 'trends/fetchTrends',
-      logout: 'auth/logout'
-      // getUser: 'user/getUser'
+      logout: 'auth/logout',
+      getUser: 'user/getUser'
     }),
     // getFeedData (item) {
     //   return {
@@ -100,6 +104,7 @@ export default {
   },
   async mounted () {
     await this.fetchTrends()
+    await this.getUser()
   }
 }
 </script>
@@ -115,9 +120,16 @@ export default {
     justify-content: space-between;
     align-items: center;
   }
+  .logo {
+    cursor: pointer;
+  }
+  .ava {
+    cursor: pointer;
+  }
   .icon {
     width: 25px;
     height: 25px;
+    cursor: pointer;
   }
   .icon-exit {
     width: 30px;
@@ -144,5 +156,9 @@ export default {
     &:last-child {
       margin-right: 0;
     }
+  }
+  .login {
+    font: bold;
+    margin-right: 12px;
   }
 </style>

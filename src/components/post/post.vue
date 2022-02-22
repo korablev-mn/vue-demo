@@ -1,7 +1,7 @@
 <template>
   <div class="post">
     <div class="post__user mt-16 mb-16 ml-12">
-        <user :src="Url" name="username"/>
+        <user :src="Url" :name="username"/>
     </div>
     <div class="post__card">
         <slot name="card"/>
@@ -9,12 +9,10 @@
     <toggler @onToggle="toggleClick"/>
     <div v-if="isShow">
         <ul class="post__comment comment__list mb-16">
-            <li v-for="item in 5" class="commetn__item" :key="item">
+            <li v-for="item in 1" class="commetn__item" :key="item">
                 <p>
-                    <span class="comment_user mb-16">User Name</span>
-                    KJNKNKLBLJHBLJHBLBJHBLHVKUHVKHVLHBLJBHIUHBLJHVLJHBLIJBJHBJHVBMHVMGHV
-                    fndfndfndfhndfhn
-                    dfn dfhndfhn fbsfbsbsfgbsfgb
+                    <span class="comment_user mb-16">{{ username }}</span><br/>
+                    {{ data }}
                 </p>
             </li>
         </ul>
@@ -25,6 +23,8 @@
 <script>
 import { user } from '../user'
 import { toggler } from '../toggler'
+import { mapState, mapActions, mapGetters } from 'vuex'
+
 export default {
   name: 'Post',
   components: {
@@ -40,13 +40,27 @@ export default {
       default: 'User'
     }
   },
+  computed: {
+    ...mapState({
+      data: state => state.issue.data
+    }),
+    ...mapGetters(['getUnstarredOnly'])
+  },
   data () {
     return {
       isShow: false
     }
   },
   methods: {
-    toggleClick (state) {
+    ...mapActions({
+      getIssue: 'issue/getIssue'
+    }),
+    async toggleClick (state) {
+      var prop = this.username.split('/')
+      var owner = prop[0]
+      var repo = prop[1]
+      console.log('запрос issue: repo - ' + prop[0] + '////' + prop[1])
+      await this.getIssue({ repo, owner })
       this.isShow = state
     }
   }
