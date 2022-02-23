@@ -1,6 +1,5 @@
 import { createStore } from 'vuex'
 import trends from '../store/modules/trends'
-import starred from '../store/modules/starred'
 import auth from '../store/modules/auth'
 import user from '../store/modules/user'
 import issue from '../store/modules/issue'
@@ -9,7 +8,7 @@ export default createStore({
   getters: {
     getUnstarredOnly (state) {
       return state.trends.data.filter((trendsRepo) => {
-        return !state.starred.data.some(starredRepo => {
+        return !state.user.likes.some(starredRepo => {
           return trendsRepo.id === starredRepo.id
         })
       })
@@ -17,7 +16,6 @@ export default createStore({
   },
   modules: {
     trends,
-    starred,
     auth,
     user,
     issue

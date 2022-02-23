@@ -13,14 +13,13 @@
           </li>
       </ul>
   </div>
-  <pre>{{ likes }}</pre>
 </template>
 
 <script>
 import { post } from '@/components/post'
 import { card } from '@/components/card'
 // import data from '@/data.json'
-import { mapState, mapActions, mapGetters } from 'vuex'
+import { mapState, mapActions } from 'vuex'
 export default {
   name: 'Posts',
   components: {
@@ -29,8 +28,7 @@ export default {
   computed: {
     ...mapState({
       likes: state => state.user.likes
-    }),
-    ...mapGetters(['getUnstarredOnly'])
+    })
   },
   // data () {
   //   return {

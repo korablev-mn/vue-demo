@@ -1,5 +1,4 @@
 <template>
-<!-- <pre>{{items}}</pre> -->
   <div class="heading">
     <heading>
       <template #headline>
@@ -26,7 +25,7 @@
       </template>
       <template #content>
         <ul class="stories">
-          <li v-for="item in items" :key="item.id" class="stories-item mr-8">
+          <li v-for="item in getUnstarredOnly" :key="item.id" class="stories-item mr-8">
             <story-user-item
               class="story-user-item"
               :avatar="item.owner.avatar_url"
@@ -38,14 +37,6 @@
       </template>
     </heading>
       <posts/>
-      <!-- <div class="x-container">
-        <ul class="list">
-          <li class="item" v-for="item in items" :key='item.id'>
-            <feed :feed="getFeedData(item)">
-            </feed>
-          </li>
-        </ul>
-      </div>-->
   </div>
 </template>
 
@@ -56,40 +47,36 @@ import StoryUserItem from '../../components/storyUserItem/storyUserItem.vue'
 // import stories from '../../data.json'
 import { avatar } from '../../components/avatar'
 import { posts } from '../posts'
-// import * as api from '../../api'
-import { mapState, mapActions, mapGetters } from 'vuex'
+import { useStore } from 'vuex'
+import { onMounted, computed, ref } from 'vue'
+// import feeds from '../../composables/feeds'
 
 export default {
   name: 'Feeds',
   components: {
     heading, icon, StoryUserItem, avatar, posts
   },
-  // data () {
-  //   return {
-  //     stories,
-  //     items: []
-  //   }
-  // },
-  computed: {
-    ...mapState({
-      items: state => state.trends.data,
-      user: state => state.user.userData
-    }),
-    ...mapGetters(['getUnstarredOnly'])
-    // hasUser: 'user/hasUser'
-  },
-  data () {
+  setup () {
+    const { dispatch, state, getters } = useStore()
+    const hasUser = ref(true)
+    const hoverExt = ref(false)
+    const logout = () => {
+      dispatch('auth/logout')
+    }
+    onMounted(() => {
+      dispatch('trends/fetchTrends')
+      dispatch('user/getUser')
+    })
     return {
-      hasUser: true,
-      hoverExt: false
+      hasUser,
+      hoverExt,
+      items: computed(() => state.trends.data),
+      user: computed(() => state.user.userData),
+      logout,
+      getUnstarredOnly: computed(() => getters.getUnstarredOnly)
     }
   },
   methods: {
-    ...mapActions({
-      fetchTrends: 'trends/fetchTrends',
-      logout: 'auth/logout',
-      getUser: 'user/getUser'
-    }),
     // getFeedData (item) {
     //   return {
     //     title: item.name,
@@ -101,10 +88,6 @@ export default {
     handlePress (id) {
       this.$router.push({ name: 'stories', params: { initialSlide: id } })
     }
-  },
-  async mounted () {
-    await this.fetchTrends()
-    await this.getUser()
   }
 }
 </script>
